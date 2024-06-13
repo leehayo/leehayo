@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아기공룡 둘리</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Bagel Fat One', sans-serif;
+      text-align: center;
+      background-color:;
+      margin: 0;
+      padding: 0;
+      background-image: url(https://i.imgur.com/gPm4Tiy.png); /* 배경 이미지 설정 */
+      background-size: cover; /* 배경 이미지를 화면 크기에 맞게 조정 */
+      background-position: center; /* 배경 이미지를 가운데에 위치 */
+      background-repeat: no-repeat; /* 배경 이미지 반복 안 함 */
+      background-attachment: fixed; /* 배경 이미지를 고정 */
+    }
+    header {
+      background-color: rgba(70, 190, 180, 0.8); /* 반투명 배경색 설정 */
+      color: white;
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    header img {
+      height: 50px; /* 이미지 높이를 텍스트와 맞추기 위해 조정합니다 */
+      margin-right: 10px; /* 이미지와 텍스트 간격 조정 */
+    }
+    header span {
+      font-size: 2em; /* 제목 글씨 크기 조정 */
+    }
+    .main-image {
+      width: 50%;
+      margin-top: 20px;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .slider-container, .font-container, .font-size-container {
+      margin: 20px 0;
+    }
+    .slider-container input, .font-container select, .font-size-container input {
+      width: 300px;
+    }
+    #doolyInfo {
+      display: none;
+      margin-top: 20px;
+    }
+    footer {
+      background-color: rgba(70, 130, 180, 0.8); /* 반투명 배경색 설정 */
+      color: white;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+  
+    <span>아기공룡 둘리</span>
+  </header>
+  <main>
+    <img src=https://i.imgur.com/c7tl16z.pngalt="Dooly and Friends" id="bounceImage" class="main-image" onclick="bounceAndShowInfo()">
+    
+    <div class="slider-container">
+      <label for="imageSize">이미지 크기 조절:</label>
+      <input type="range" id="imageSize" name="imageSize" min="50" max="800" value="400" oninput="resizeImage(this.value)">
+    </div>
+    
+    <div class="font-container">
+      <label for="fontSelect">폰트 선택:</label>
+      <select id="fontSelect" onchange="changeFont(this.value)">
+        <option value="'Bagel Fat One', sans-serif">Bagel Fat One</option>
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="'Times New Roman', serif">Times New Roman</option>
+        <option value="'Courier New', monospace">Courier New</option>
+        <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+        <option value="'Georgia', serif">Georgia</option>
+        <option value="'Roboto', sans-serif">Roboto</option>
+        <option value="'Open Sans', sans-serif">Open Sans</option>
+      </select>
+    </div>
+    
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤 질문</title>
+    <style>
+        #doolyImage {
+            width: 200px; /* 이미지 크기를 조정하세요 */
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="doolyInfo">
+            <h2>둘리의 질문</h2>
+            <p id="question">어른이 되면 가장 좋아지는 점은 무엇인가요?</p>
+            <img id="doolyImage" src="dooly.png" alt="둘리 이미지" style="cursor: pointer;">
+        </section>
+    </main>
+    <script>
+        // 캐릭터별 질문 배열
+        const questions = {
+            둘리: [
+                "어른이 되면 가장 좋아지는 점은 무엇인가요?",
+                "어른들은 어떻게 중요한 결정을 하나요?",
+                "어른이 되어도 친구들과 재미있는 모험을 계속할 수 있나요?"
+            ],
+            도우너: [
+                "어른이 되면 새로운 세상을 탐험하는 것이 더 쉬워지나요?",
+                "어른들은 꿈을 이루기 위해 어떤 노력을 하나요?",
+                "가끔 엉뚱한 생각이 들 때, 어른들은 어떻게 하나요?"
+            ],
+            또치: [
+                "어른이 되면 용기를 낼 때 더 많은 책임이 따르나요?",
+                "어른들은 친구들과의 우정을 어떻게 유지하나요?",
+                "힘든 상황에서 어른들은 어떻게 침착하게 대처하나요?"
+            ],
+            마이콜: [
+                "어른이 되면 더 자유롭게 음악을 즐길 수 있나요?",
+                "어른들은 언제나 긍정적일 수 있는 비결이 있나요?",
+                "창의력을 유지하기 위해 어른들은 어떤 노력을 하나요?"
+            ],
+            희동이: [
+                "어른이 되면 어린 시절의 기억을 어떻게 간직하나요?",
+                "어른들도 여전히 놀고 즐기는 시간을 가지나요?",
+                "어른들이 어린 시절 가장 좋아했던 놀이는 무엇인가요?"
+            ],
+            고길동: [
+                "어른이 되면 책임감이 커진다고 하는데, 어떻게 관리하나요?",
+                "어른들은 가족을 위해 어떤 노력을 하나요?",
+                "어른이 되어도 여전히 꿈을 꾸고 이루려고 하나요?"
+            ]
+        };
+
+        // 캐릭터 배열 및 캐릭터 이미지 경로
+        const characters = Object.keys(questions);
+        const characterImages = {
+            둘리: "dooly.png",
+            도우너: "douner.png",
+            또치: "ddochi.png",
+            마이콜: "michael.png",
+            희동이: "heedong.png",
+            고길동: "gogildong.png"
+        };
+
+        // 랜덤 질문 선택 함수
+        function getRandomQuestion() {
+            const randomCharacter = characters[Math.floor(Math.random() * characters.length)];
+            const randomQuestionIndex = Math.floor(Math.random() * questions[randomCharacter].length);
+            return {
+                character: randomCharacter,
+                question: questions[randomCharacter][randomQuestionIndex],
+                image: characterImages[randomCharacter]
+            };
+        }
+
+        // 이미지 클릭 시 랜덤 질문 및 이미지 표시
+        document.getElementById('doolyImage').addEventListener('click', () => {
+            const randomQuestion = getRandomQuestion();
+            const questionElement = document.getElementById('question');
+            const h2Element = document.querySelector('#doolyInfo h2');
+            const imageElement = document.getElementById('doolyImage');
+
+            h2Element.textContent = `${randomQuestion.character}의 질문`;
+            questionElement.textContent = randomQuestion.question;
+            imageElement.src = randomQuestion.image;
+            imageElement.alt = `${randomQuestion.character} 이미지`;
+        });
+    </script>
+</body>
+</html>
+
+
+  <script>
+    function bounceAndShowInfo() {
+      var img = document.getElementById("bounceImage");
+      img.style.transform = "scale(1.2)";
+      setTimeout(function() {
+        img.style.transform = "scale(0.9)";
+        setTimeout(function() {
+          img.style.transform = "scale(1)";
+          showInfo();
+        }, 200);
+      }, 200);
+    }
+
+    function showInfo() {
+      var info = document.getElementById("doolyInfo");
+      if (info.style.display === "none") {
+        info.style.display = "block";
+      } else {
+        info.style.display = "none";
+      }
+    }
+
+    function resizeImage(size) {
+      var img = document.getElementById("bounceImage");
+      img.style.width = size + "px";
+    }
+
+    function changeFont(font) {
+      document.body.style.fontFamily = font;
+    }
+
+    function resizeFont(size) {
+      var content = document.getElementById("doolyInfo");
+      content.style.fontSize = size + "px";
+    }
+  </script>
+</body>
+</html>
